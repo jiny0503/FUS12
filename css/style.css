@@ -41,8 +41,38 @@ a:hover, a:focus{
 a:active{color: green;
 } */
 
+/* 헤더 디자인 */
+.app-header{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.4);
+  margin-bottom: 30px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* 브랜드 디자인 */
+
+.brand {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.brand a {
+  display: block;
+}
+.brand a img {
+  padding: 25px;
+}
+
 /* 버튼 디자인 */
-.app-header .button,
+.button {
+  cursor: pointer;
+  border: none;
+}
 .app-header .button .ir,
 .app-header .button .close {
   cursor: pointer;
@@ -70,3 +100,12 @@ a:active{color: green;
 .app-header .button.is-open-menu:focus {
   background: #f5f5f5;
 }
+
+/* --------------------------------------------
+  * 메인 디자인 */
+
+  .app-main {
+    margin: 90px 20px 40px 20px;
+    max-width: 960px;
+    /* box-sizing: border-box; */
+  }
