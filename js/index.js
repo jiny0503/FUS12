@@ -2,7 +2,7 @@
 // 인터랙션 UI 디자인 - OffCanvas 메뉴 / Toggle 패널
 // - DOM API, 변수, 함수, 조건문, 반복문, 연산자 등을 활용하는 총체적 예제.
 //
-// [1.1] EDIYA COFFEE 로고 오른쪽 옆에 위치한 토글 버튼(.button.is-open)을 누르면,
+// [1.1] EDIYA COFFEE 로고 오른쪽 옆에 위치한 토글 버튼(.button.is-menu)을 누르면,
 //       오프캔버스 메뉴(.app-navigation)을 화면에 표시한다.
 //       - hidden 속성 값 false 설정.
 //       - is-active 클래스 추가.
@@ -38,9 +38,9 @@ var menu_items     = null;
 
 // 초기화
 function init() {
-  // 문서 객체 접근 참조
+  // 문서 객체 접근 참조(DOM탐색)
   accessingDOMElements();
-  // 오프캔버스 메뉴 접근성
+  // 오프캔버스 메뉴 키보드 접근성(탭키, 시프트텝키)
   a11yOffCanvasMenu(app_navigation);
   // 이벤트 바인딩
   bindEvents();
@@ -59,7 +59,7 @@ function accessingDOMElements() {
 function bindEvents() {
   
   for ( var i=0, l=menu_items.length; i<l; ++i ) {
-    var menu_item = menu_items[i];
+    var menu_item = menu_items[i]; //i->index
     var link = el('a', menu_item);
     var close_panel_btn = el('.button.is-close-panel', menu_item);
     link.addEventListener('click', openDetailPanel.bind(link, i));
@@ -86,10 +86,10 @@ function closeNavMenu() {
 }
 
 function openDetailPanel(index, e) {
-  e.preventDefault();
-  var detail = el('.ediya-menu__item--detail', menu_items[index]);
-  detail.hidden = false;
-  window.setTimeout(function(){
+  e.preventDefault(); //기본 이벤트삭제
+  var detail = el('.ediya-menu__item--detail', menu_items[index]); //index(0,1,2,3,4,5,6,7)번호
+  detail.hidden = false; //화면에 보여짐 hidden 숨김
+  window.setTimeout(function(){ 
     detail.classList.add('is-active');
   }, 10);
 }
@@ -106,7 +106,7 @@ init();
 
 
 // -----------------------------------------------------------------
-// 오프캔버스 메뉴 접근성
+// 오프캔버스 메뉴 키보드 접근성
 // -----------------------------------------------------------------
 function a11yOffCanvasMenu(app_navigation) {
   
